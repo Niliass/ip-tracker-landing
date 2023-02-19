@@ -72,9 +72,6 @@ header {
       &:focus::placeholder {
         color: transparent;
       }
-      &.invalid {
-        color: red;
-      }
     }
     &__btn {
       padding: 1rem 1.5rem;
@@ -91,7 +88,7 @@ header {
       min-height: 100px;
       .info__holder {
         position: absolute;
-        z-index: 1;
+        z-index: 10000;
         background: $white;
         width: 100%;
         padding-block: 1rem;

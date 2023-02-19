@@ -1,5 +1,8 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import React from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
+import Mark from "./Marker";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 const containerStyle = {
   position: "relative",
@@ -9,49 +12,28 @@ const containerStyle = {
   minHeight: "500px",
 };
 
-function MyComponent({ coords }) {
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: "AIzaSyAsIpWT92jLItlNnXjbjsM7NpG-Kzd3Y6k",
-  });
+const icon = L.icon({
+  iconSize: [32, 40],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -41],
+  iconUrl: "./icon-location.svg",
+});
 
-  const [map, setMap] = useState(null);
-
-  const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(coords);
-    const marker = new google.maps.Marker({
-      position: coords,
-      map: map,
-      icon: "./icon-location.svg",
-    });
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-
-  const handleChange = useCallback(() => {
-    const marker = new google.maps.Marker({
-      position: coords,
-      map: map,
-      icon: "./icon-location.svg",
-    });
-  }, [coords]);
-
-  const onUnmount = useCallback(function callback(map) {
-    setMap(null);
-  }, []);
-
-  return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={coords}
+const Map = ({ position }) => {
+  return (
+    <MapContainer
+      center={position}
       zoom={13}
-      onCenterChanged={handleChange}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-    ></GoogleMap>
-  ) : (
-    <></>
+      scrollWheelZoom={true}
+      style={containerStyle}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Mark icon={icon} position={position} />
+    </MapContainer>
   );
-}
+};
 
-export default React.memo(MyComponent);
+export default Map;

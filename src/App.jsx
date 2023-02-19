@@ -8,13 +8,10 @@ function App() {
     lng: -7.5898,
   });
 
-  const handleCoords = (obj) => {
-    setCoords(obj);
-  };
   return (
     <div className="App">
-      <Header coords={handleCoords} />
-      <Map coords={coords} />
+      <Header coords={(obj) => setCoords(obj)} />
+      <Map position={coords} />
     </div>
   );
 }
