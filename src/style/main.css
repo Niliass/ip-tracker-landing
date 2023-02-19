@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+.container {
+  padding-inline: 25px;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1140px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+header {
+  background: url("../pattern-bg.png");
+  background-size: cover;
+  padding-top: 1.5rem;
+}
+header .container {
+  text-align: center;
+}
+header .title {
+  color: hsl(0deg, 0%, 100%);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+header .ip__search__form {
+  display: flex;
+  justify-content: space-between;
+  width: min(100%, 500px);
+  margin-top: 1.5rem;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+header .ip__search__input {
+  flex: 1;
+  font-size: 18px;
+  padding-block: 1rem;
+  padding-left: 1.5rem;
+}
+header .ip__search__input::-moz-placeholder {
+  color: hsl(0deg, 0%, 59%);
+  font-size: 1rem;
+  -moz-transition: 0.25s;
+  transition: 0.25s;
+}
+header .ip__search__input::placeholder {
+  color: hsl(0deg, 0%, 59%);
+  font-size: 1rem;
+  transition: 0.25s;
+}
+header .ip__search__input:focus::-moz-placeholder {
+  color: transparent;
+}
+header .ip__search__input:focus::placeholder {
+  color: transparent;
+}
+header .ip__search__input.invalid {
+  color: red;
+}
+header .ip__search__btn {
+  padding: 1rem 1.5rem;
+  background: hsl(0deg, 0%, 17%);
+  cursor: pointer;
+  transition: 0.25s;
+}
+header .ip__search__btn:hover {
+  background-color: #454545;
+}
+header .ip__search__container {
+  position: relative;
+  margin-top: 1.5rem;
+  min-height: 100px;
+}
+header .ip__search__container .info__holder {
+  position: absolute;
+  z-index: 1;
+  background: hsl(0deg, 0%, 100%);
+  width: 100%;
+  padding-block: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 20px 0 rgba(43, 43, 43, 0.4);
+}
+@media (min-width: 992px) {
+  header .ip__search__container .info__holder {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    transform: translateY(20%);
+  }
+}
+header .ip__search__container .info__holder .break__line {
+  display: none;
+  align-self: center;
+  background-color: rgba(150, 150, 150, 0.6);
+  border: none;
+  width: 1px;
+  height: 50px;
+}
+@media (min-width: 992px) {
+  header .ip__search__container .info__holder .break__line {
+    display: block;
+  }
+}
+header .ip__search__info {
+  padding: 0.5rem;
+}
+@media (min-width: 992px) {
+  header .ip__search__info {
+    flex: 1;
+  }
+}
+header .ip__search__info__title {
+  color: hsl(0deg, 0%, 59%);
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+header .ip__search__info__content {
+  font-weight: 500;
+  font-size: clamp(1.2rem, 3vw, 1.9rem);
+  color: hsl(0deg, 0%, 17%);
+  margin-top: 0.5rem;
+}/*# sourceMappingURL=main.css.map */

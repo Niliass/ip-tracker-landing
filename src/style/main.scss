@@ -1,0 +1,143 @@
+@use "./container";
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+$v-d-gray: hsl(0, 0%, 17%);
+$d-gray: hsl(0, 0%, 59%);
+$white: hsl(0, 0%, 100%);
+$trans: 0.25s;
+$radius: 15px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+@mixin media($wd) {
+  @media (min-width: $wd) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+header {
+  background: url("../pattern-bg.png");
+  background-size: cover;
+  padding-top: 1.5rem;
+  .container {
+    text-align: center;
+  }
+  .title {
+    color: $white;
+    font: {
+      size: 1.6rem;
+      weight: 500;
+    }
+  }
+  .ip__search {
+    &__form {
+      display: flex;
+      justify-content: space-between;
+      width: min(100%, 500px);
+      margin-top: 1.5rem;
+      margin-inline: auto;
+      overflow: hidden;
+      border-radius: $radius;
+    }
+    &__input {
+      flex: 1;
+      font-size: 18px;
+      padding-block: 1rem;
+      padding-left: 1.5rem;
+      &::placeholder {
+        color: $d-gray;
+        font-size: 1rem;
+        transition: $trans;
+      }
+      &:focus::placeholder {
+        color: transparent;
+      }
+      &.invalid {
+        color: red;
+      }
+    }
+    &__btn {
+      padding: 1rem 1.5rem;
+      background: $v-d-gray;
+      cursor: pointer;
+      transition: $trans;
+      &:hover {
+        background-color: lighten($v-d-gray, 10%);
+      }
+    }
+    &__container {
+      position: relative;
+      margin-top: 1.5rem;
+      min-height: 100px;
+      .info__holder {
+        position: absolute;
+        z-index: 1;
+        background: $white;
+        width: 100%;
+        padding-block: 1rem;
+        border-radius: 15px;
+        box-shadow: 0 15px 20px 0 rgb($v-d-gray, 0.4);
+        @include media($lg) {
+          display: flex;
+          gap: 1rem;
+          padding: 1.5rem 2rem;
+          transform: translateY(20%);
+        }
+        .break__line {
+          display: none;
+          align-self: center;
+          background-color: rgb($d-gray, 0.6);
+          border: none;
+          width: 1px;
+          height: 50px;
+          @include media($lg) {
+            display: block;
+          }
+        }
+      }
+    }
+    &__info {
+      padding: 0.5rem;
+      @include media($lg) {
+        flex: 1;
+      }
+      &__title {
+        color: $d-gray;
+        font: {
+          weight: 500;
+          size: 0.7rem;
+        }
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      &__content {
+        font: {
+          weight: 500;
+          size: clamp(1.2rem, 3vw, 1.9rem);
+        }
+        color: $v-d-gray;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
